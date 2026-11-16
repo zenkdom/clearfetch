@@ -4,7 +4,7 @@
   "title": "ClearFetch - Unblocked Web & Anti-Bot MCP Server",
   "description": "Where Jina Reader and Firecrawl fail with 403 Forbidden on Cloudflare Turnstile or DataDome, ClearFetch guarantees clean Markdown and typed JSON extraction for AI agents.",
   "website": "https://clearfetch.dev",
-  "repository": "https://github.com/clearfetch/clearfetch",
+  "repository": "https://github.com/zenkdom/clearfetch",
   "license": "MIT",
   "transport": "stdio",
   "install": {
