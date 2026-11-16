@@ -3,7 +3,10 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
+  ListPromptsRequestSchema,
+  GetPromptRequestSchema,
   Tool,
+  Prompt,
 } from "@modelcontextprotocol/sdk/types.js";
 import { UnblockedApiClient } from "./client.js";
 import { ReadUrlSchema, ExtractDataSchema, SearchAndReadSchema } from "./tools.js";
@@ -108,6 +111,42 @@ const TOOLS: Tool[] = [
   },
 ];
 
+const PROMPTS: Prompt[] = [
+  {
+    name: "read_and_summarize",
+    description: "Read any webpage or article behind Cloudflare/Turnstile and generate a concise summary",
+    arguments: [
+      {
+        name: "url",
+        description: "Target webpage URL to read (e.g. https://news.ycombinator.com)",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "extract_pricing_table",
+    description: "Extract tiers, prices, and features from a SaaS pricing page into clean JSON",
+    arguments: [
+      {
+        name: "url",
+        description: "Pricing page URL (e.g. https://clearfetch.dev/pricing)",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "web_deep_research",
+    description: "Search the live web and read top results to research any topic or query",
+    arguments: [
+      {
+        name: "query",
+        description: "Research topic or query (e.g. Model Context Protocol best practices 2026)",
+        required: true,
+      },
+    ],
+  },
+];
+
 export function createServer(): Server {
   const server = new Server(
     {
@@ -117,12 +156,64 @@ export function createServer(): Server {
     {
       capabilities: {
         tools: {},
+        prompts: {},
       },
     }
   );
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     return { tools: TOOLS };
+  });
+
+  server.setRequestHandler(ListPromptsRequestSchema, async () => {
+    return { prompts: PROMPTS };
+  });
+
+  server.setRequestHandler(GetPromptRequestSchema, async (request) => {
+    const { name, arguments: args } = request.params;
+    if (name === "read_and_summarize") {
+      const url = args?.url || "https://example.com";
+      return {
+        messages: [
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: `Please use the read_url tool to fetch the content from ${url} and provide a well-structured summary with key takeaways.`,
+            },
+          },
+        ],
+      };
+    }
+    if (name === "extract_pricing_table") {
+      const url = args?.url || "https://clearfetch.dev/pricing";
+      return {
+        messages: [
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: `Please use the extract_structured_data tool on ${url} to extract all pricing plans, monthly/annual costs, and included limits/features into structured JSON.`,
+            },
+          },
+        ],
+      };
+    }
+    if (name === "web_deep_research") {
+      const query = args?.query || "Model Context Protocol";
+      return {
+        messages: [
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: `Please use the search_and_read tool with the query "${query}" and write a detailed synthesis report covering the top findings.`,
+            },
+          },
+        ],
+      };
+    }
+    throw new Error(`Unknown prompt requested: ${name}`);
   });
 
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
