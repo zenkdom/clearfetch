@@ -198,5 +198,5 @@ export async function runStdioServer() {
   const server = createServer();
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Unblocked Web MCP Server running on stdio transport.");
+  console.error("ClearFetch MCP Server running on stdio transport.");
 }

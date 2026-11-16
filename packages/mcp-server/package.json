@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node ./bin/unblocked-mcp.js",
+    "start": "node ./bin/clearfetch-mcp.js",
     "dev": "tsc -w",
     "prepublishOnly": "npm run build"
   },
