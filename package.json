@@ -1,0 +1,12 @@
+{
+  "name": "clearfetch-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=clearfetch",
+    "start": "node ./packages/mcp-server/bin/clearfetch-mcp.js"
+  }
+}
