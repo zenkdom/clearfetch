@@ -1,6 +1,7 @@
 {
   "name": "clearfetch",
   "version": "1.0.0",
+  "type": "module",
   "description": "Production-ready Model Context Protocol (MCP) server for ClearFetch (clearfetch.dev) - bypass Cloudflare, DataDome, and Turnstile to deliver clean Markdown & structured data to AI agents.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
