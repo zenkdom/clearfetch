@@ -1,0 +1,49 @@
+{
+  "name": "n8n-nodes-clearfetch",
+  "version": "1.0.0",
+  "description": "Official n8n community node for ClearFetch (clearfetch.dev) - Bypass Cloudflare Turnstile & DataDome to extract clean Markdown and structured JSON for AI workflows.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n-nodes",
+    "clearfetch",
+    "web-scraper",
+    "anti-bot",
+    "cloudflare-turnstile",
+    "datadome",
+    "ai-agent",
+    "mcp"
+  ],
+  "license": "MIT",
+  "homepage": "https://clearfetch.dev",
+  "author": {
+    "name": "ClearFetch Team",
+    "email": "support@clearfetch.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clearfetch/n8n-nodes-clearfetch.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && npm run copy-assets",
+    "copy-assets": "node -e \"const fs=require('fs'); fs.mkdirSync('dist/nodes/ClearFetch', {recursive:true}); fs.copyFileSync('nodes/ClearFetch/clearfetch.svg', 'dist/nodes/ClearFetch/clearfetch.svg');\"",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/ClearFetchApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/ClearFetch/ClearFetch.node.js"
+    ]
+  },
+  "devDependencies": {
+    "n8n-workflow": "^1.60.0",
+    "typescript": "^5.6.3"
+  }
+}

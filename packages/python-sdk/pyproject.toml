@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clearfetch"
+version = "1.0.0"
+description = "Official Python SDK for ClearFetch (clearfetch.dev) - Unblocked Web & Anti-Bot Markdown/JSON Extraction for AI Agents."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "ClearFetch Team", email = "support@clearfetch.dev" }
+]
+keywords = [
+    "clearfetch",
+    "web-scraper",
+    "anti-bot",
+    "cloudflare-turnstile",
+    "datadome",
+    "ai-agent",
+    "llm",
+    "langchain",
+    "llamaindex",
+    "rag"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = [
+    "httpx>=0.25.0",
+]
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=0.1.0"]
+llamaindex = ["llama-index-core>=0.10.0"]
+all = ["langchain-core>=0.1.0", "llama-index-core>=0.10.0"]
+
+[project.urls]
+Homepage = "https://clearfetch.dev"
+Documentation = "https://clearfetch.dev/docs"
+Repository = "https://github.com/clearfetch/clearfetch-python"
+
+[project.scripts]
+clearfetch = "clearfetch.cli:main"

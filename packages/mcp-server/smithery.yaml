@@ -1,0 +1,22 @@
+# Smithery.ai MCP Server Configuration
+# Listing URL: https://smithery.ai/server/clearfetch
+version: 1
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - CLEARFETCH_API_KEY
+    properties:
+      CLEARFETCH_API_KEY:
+        type: string
+        description: Your ClearFetch Live API Key from https://clearfetch.dev/dashboard
+        default: ""
+      CLEARFETCH_API_URL:
+        type: string
+        description: Custom ClearFetch Gateway URL (defaults to https://api.clearfetch.dev)
+        default: "https://api.clearfetch.dev"
+  command: npx
+  args:
+    - "-y"
+    - "clearfetch"
