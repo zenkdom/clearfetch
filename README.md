@@ -4,7 +4,6 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/clearfetch.svg?color=blue)](https://pypi.org/project/clearfetch/)
 [![npm version](https://img.shields.io/npm/v/clearfetch.svg?color=red)](https://www.npmjs.com/package/clearfetch)
-[![Smithery](https://smithery.ai/badge/clearfetch)](https://smithery.ai/server/clearfetch)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Node.js 18+](https://img.shields.io/badge/node-18+-green.svg)](https://nodejs.org/)
@@ -24,11 +23,6 @@
 Run instantly without cloning or local installation:
 ```bash
 npx -y clearfetch
-```
-
-Or install in Claude Desktop via [Smithery](https://smithery.ai/server/clearfetch):
-```bash
-npx -y @smithery/cli install clearfetch --client claude
 ```
 
 #### Claude Desktop Configuration (`claude_desktop_config.json`)
