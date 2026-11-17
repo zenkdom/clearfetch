@@ -8,17 +8,17 @@ import {
   Tool,
   Prompt,
 } from "@modelcontextprotocol/sdk/types.js";
-import { UnblockedApiClient } from "./client.js";
+import { ClearFetchApiClient } from "./client.js";
 import { ReadUrlSchema, ExtractDataSchema, SearchAndReadSchema } from "./tools.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const client = new UnblockedApiClient();
+const client = new ClearFetchApiClient();
 
 const TOOLS: Tool[] = [
   {
-    name: "read_url",
+    name: "clearfetch_read",
     description:
       "Read any URL as clean, token-optimized Markdown. Reliably bypasses Cloudflare Turnstile, DataDome, PerimeterX, and anti-bot systems where other scrapers fail with 403 Forbidden.",
     inputSchema: {
@@ -55,7 +55,7 @@ const TOOLS: Tool[] = [
     },
   },
   {
-    name: "extract_structured_data",
+    name: "clearfetch_extract",
     description:
       "Extract strongly-typed JSON matching a strict schema from any webpage, even behind heavy anti-bot protections.",
     inputSchema: {
@@ -83,7 +83,7 @@ const TOOLS: Tool[] = [
     },
   },
   {
-    name: "search_and_read",
+    name: "clearfetch_search",
     description:
       "Search the live web and return clean Markdown content bundles of top results in a single step for AI agent context / RAG.",
     inputSchema: {
@@ -150,8 +150,8 @@ const PROMPTS: Prompt[] = [
 export function createServer(): Server {
   const server = new Server(
     {
-      name: "clearfetch-mcp",
-      version: "1.0.0",
+      name: "clearfetch",
+      version: "1.0.1",
     },
     {
       capabilities: {
@@ -179,7 +179,7 @@ export function createServer(): Server {
             role: "user",
             content: {
               type: "text",
-              text: `Please use the read_url tool to fetch the content from ${url} and provide a well-structured summary with key takeaways.`,
+              text: `Please use the clearfetch_read tool to fetch the content from ${url} and provide a well-structured summary with key takeaways.`,
             },
           },
         ],
@@ -193,7 +193,7 @@ export function createServer(): Server {
             role: "user",
             content: {
               type: "text",
-              text: `Please use the extract_structured_data tool on ${url} to extract all pricing plans, monthly/annual costs, and included limits/features into structured JSON.`,
+              text: `Please use the clearfetch_extract tool on ${url} to extract all pricing plans, monthly/annual costs, and included limits/features into structured JSON.`,
             },
           },
         ],
@@ -207,7 +207,7 @@ export function createServer(): Server {
             role: "user",
             content: {
               type: "text",
-              text: `Please use the search_and_read tool with the query "${query}" and write a detailed synthesis report covering the top findings.`,
+              text: `Please use the clearfetch_search tool with the query "${query}" and write a detailed synthesis report covering the top findings.`,
             },
           },
         ],
@@ -220,7 +220,7 @@ export function createServer(): Server {
     const { name, arguments: args } = request.params;
 
     try {
-      if (name === "read_url") {
+      if (name === "clearfetch_read" || name === "read_url") {
         const validated = ReadUrlSchema.parse(args);
         const res = await client.readUrl(validated);
         return {
@@ -233,7 +233,7 @@ export function createServer(): Server {
         };
       }
 
-      if (name === "extract_structured_data") {
+      if (name === "clearfetch_extract" || name === "extract_structured_data") {
         const validated = ExtractDataSchema.parse(args);
         const res = await client.extractData(validated);
         return {
@@ -246,7 +246,7 @@ export function createServer(): Server {
         };
       }
 
-      if (name === "search_and_read") {
+      if (name === "clearfetch_search" || name === "search_and_read") {
         const validated = SearchAndReadSchema.parse(args);
         const res = await client.searchAndRead(validated);
 

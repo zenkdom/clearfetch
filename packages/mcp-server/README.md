@@ -24,9 +24,9 @@ npx -y clearfetch
 
 | Tool | Description | Key Parameters |
 | :--- | :--- | :--- |
-| `read_url` | Reads any URL (including Cloudflare/DataDome protected pages) as clean, token-optimized Markdown. | `url` (required), `stealth` ("auto" \| "force"), `max_age` (cache TTL in sec), `only_main_content` (bool) |
-| `extract_structured_data` | Extracts typed JSON matching a strict schema from any webpage. | `url` (required), `json_schema` (required object), `prompt` (optional instruction) |
-| `search_and_read` | Searches the web and returns full clean Markdown content of top results in one step. | `query` (required), `limit` (1-10, default 5), `scrape_results` (bool) |
+| `clearfetch_read` | Reads any URL (including Cloudflare/DataDome protected pages) as clean, token-optimized Markdown. | `url` (required), `stealth` ("auto" \| "force"), `max_age` (cache TTL in sec), `only_main_content` (bool) |
+| `clearfetch_extract` | Extracts typed JSON matching a strict schema from any webpage. | `url` (required), `json_schema` (required object), `prompt` (optional instruction) |
+| `clearfetch_search` | Searches the web and returns full clean Markdown content of top results in one step. | `query` (required), `limit` (1-10, default 5), `scrape_results` (bool) |
 
 ---
 
@@ -95,9 +95,9 @@ In your n8n workflow with the **AI Agent** node:
     },
     "disabled": false,
     "autoApprove": [
-      "read_url",
-      "extract_structured_data",
-      "search_and_read"
+      "clearfetch_read",
+      "clearfetch_extract",
+      "clearfetch_search"
     ]
   }
 }
@@ -115,7 +115,7 @@ npm run build
 
 Verify stdio connectivity:
 ```bash
-node ./bin/unblocked-mcp.js
+node ./bin/clearfetch-mcp.js
 ```
 
 ---

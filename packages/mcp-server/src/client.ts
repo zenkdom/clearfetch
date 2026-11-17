@@ -67,7 +67,7 @@ export interface SearchAndReadResponse {
   credits_used: number;
 }
 
-export class UnblockedApiClient {
+export class ClearFetchApiClient {
   private baseUrl: string;
   private apiKey: string;
 
@@ -86,7 +86,7 @@ export class UnblockedApiClient {
     const url = `${this.baseUrl}${endpoint}`;
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
-      "User-Agent": "ClearFetch-MCP-Server/1.0.0",
+      "User-Agent": "ClearFetch-MCP-Server/1.0.1",
     };
 
     if (this.apiKey) {
@@ -141,3 +141,6 @@ export class UnblockedApiClient {
     });
   }
 }
+
+// Backward-compatibility alias
+export { ClearFetchApiClient as UnblockedApiClient };
