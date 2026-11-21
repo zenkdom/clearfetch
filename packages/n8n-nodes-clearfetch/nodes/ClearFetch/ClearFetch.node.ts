@@ -202,7 +202,7 @@ export class ClearFetch implements INodeType {
           headers: {
             Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
-            'User-Agent': 'n8n-nodes-clearfetch/1.0.0',
+            'User-Agent': 'n8n-nodes-clearfetch/1.0.1',
           },
           body,
           json: true,

@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clearfetch"
-version = "1.0.0"
+version = "1.0.1"
 description = "Official Python SDK for ClearFetch (clearfetch.dev) - Unblocked Web & Anti-Bot Markdown/JSON Extraction for AI Agents."
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
     { name = "ClearFetch Team", email = "support@clearfetch.dev" }
 ]
@@ -27,7 +27,6 @@ keywords = [
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -48,7 +47,10 @@ all = ["langchain-core>=0.1.0", "llama-index-core>=0.10.0"]
 [project.urls]
 Homepage = "https://clearfetch.dev"
 Documentation = "https://clearfetch.dev/docs"
-Repository = "https://github.com/clearfetch/clearfetch-python"
+Repository = "https://github.com/zenkdom/clearfetch"
 
 [project.scripts]
 clearfetch = "clearfetch.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

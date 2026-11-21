@@ -30,7 +30,7 @@ class ClearFetch:
         self._headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
-            "User-Agent": "ClearFetch-Python-SDK/1.0.0"
+            "User-Agent": "ClearFetch-Python-SDK/1.0.1"
         }
 
     def _handle_response(self, response: httpx.Response) -> Dict[str, Any]:
@@ -180,7 +180,7 @@ class AsyncClearFetch:
         self._headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
-            "User-Agent": "ClearFetch-Python-AsyncSDK/1.0.0"
+            "User-Agent": "ClearFetch-Python-AsyncSDK/1.0.1"
         }
 
     def _handle_response(self, response: httpx.Response) -> Dict[str, Any]:

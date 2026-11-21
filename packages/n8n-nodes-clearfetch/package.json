@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-clearfetch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official n8n community node for ClearFetch (clearfetch.dev) - Bypass Cloudflare Turnstile & DataDome to extract clean Markdown and structured JSON for AI workflows.",
   "keywords": [
     "n8n-community-node-package",
@@ -21,7 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/clearfetch/n8n-nodes-clearfetch.git"
+    "url": "git+https://github.com/zenkdom/clearfetch.git",
+    "directory": "packages/n8n-nodes-clearfetch"
+  },
+  "bugs": {
+    "url": "https://github.com/zenkdom/clearfetch/issues"
   },
   "main": "index.js",
   "scripts": {

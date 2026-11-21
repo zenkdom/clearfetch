@@ -1,6 +1,6 @@
 {
   "name": "clearfetch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Production-ready Model Context Protocol (MCP) server for ClearFetch (clearfetch.dev) - bypass Cloudflare, DataDome, and Turnstile to deliver clean Markdown & structured data to AI agents.",
   "main": "dist/index.js",
@@ -33,6 +33,15 @@
   ],
   "author": "ClearFetch Team <support@clearfetch.dev>",
   "license": "MIT",
+  "homepage": "https://clearfetch.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenkdom/clearfetch.git",
+    "directory": "packages/mcp-server"
+  },
+  "bugs": {
+    "url": "https://github.com/zenkdom/clearfetch/issues"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.0",
     "dotenv": "^16.4.7",

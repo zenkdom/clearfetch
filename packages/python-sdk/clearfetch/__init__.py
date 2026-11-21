@@ -3,7 +3,7 @@ from clearfetch.types import ReadResult, ExtractResult, SearchResult, SearchItem
 from clearfetch.integrations.langchain import ClearFetchLoader
 from clearfetch.integrations.llamaindex import ClearFetchReader
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 __all__ = [
     "ClearFetch",
