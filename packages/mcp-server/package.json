@@ -43,8 +43,11 @@
     "url": "https://github.com/zenkdom/clearfetch/issues"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.6.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "dotenv": "^16.4.7",
+    "zod": "^4.6.7"
+  },
+  "overrides": {
     "zod": "^4.6.7"
   },
   "devDependencies": {
