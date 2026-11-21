@@ -260,7 +260,7 @@ export function createServer(): Server {
   const server = new Server(
     {
       name: "clearfetch",
-      version: "1.0.1",
+      version: "1.0.3",
     },
     {
       capabilities: {
