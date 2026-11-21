@@ -1,5 +1,8 @@
 # clearfetch
 
+[![M8ven Verified](https://m8ven.ai/badge/mcp/zenkdom-clearfetch-vqy32e?variant=verified&v=359caf96db7a0aed5cd74566dab71bbc)](https://m8ven.ai/mcp/zenkdom-clearfetch-vqy32e?s=readme)
+[![npm version](https://img.shields.io/npm/v/clearfetch.svg?color=red)](https://www.npmjs.com/package/clearfetch)
+
 > **The Model Context Protocol (MCP) Server for ClearFetch (`clearfetch.dev`)**  
 > Where Jina Reader and Firecrawl fail with `403 Forbidden` on Cloudflare Turnstile, DataDome, PerimeterX, or TLS/JA4 fingerprinting, ClearFetch guarantees clean, token-optimized Markdown and structured JSON extraction for AI agents.
 

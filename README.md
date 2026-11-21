@@ -4,6 +4,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/clearfetch.svg?color=blue)](https://pypi.org/project/clearfetch/)
 [![npm version](https://img.shields.io/npm/v/clearfetch.svg?color=red)](https://www.npmjs.com/package/clearfetch)
+[![M8ven Verified](https://m8ven.ai/badge/mcp/zenkdom-clearfetch-vqy32e?variant=verified&v=359caf96db7a0aed5cd74566dab71bbc)](https://m8ven.ai/mcp/zenkdom-clearfetch-vqy32e?s=readme)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Node.js 18+](https://img.shields.io/badge/node-18+-green.svg)](https://nodejs.org/)
