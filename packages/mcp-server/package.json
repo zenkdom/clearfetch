@@ -1,6 +1,6 @@
 {
   "name": "clearfetch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Production-ready Model Context Protocol (MCP) server for ClearFetch (clearfetch.dev) - bypass Cloudflare, DataDome, and Turnstile to deliver clean Markdown & structured data to AI agents.",
   "main": "dist/index.js",
@@ -11,9 +11,10 @@
   },
   "scripts": {
     "build": "tsc",
+    "test": "npm run build && node --test test/*.test.ts",
     "start": "node ./bin/clearfetch-mcp.js",
     "dev": "tsc -w",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run test"
   },
   "keywords": [
     "mcp",
@@ -35,7 +36,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.0",
     "dotenv": "^16.4.7",
-    "zod": "^3.24.2"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^22.13.9",
@@ -44,6 +45,7 @@
   "files": [
     "dist",
     "bin",
+    "test",
     "README.md"
   ]
 }

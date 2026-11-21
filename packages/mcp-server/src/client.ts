@@ -72,8 +72,8 @@ export class ClearFetchApiClient {
   private apiKey: string;
 
   constructor(apiKey?: string, baseUrl?: string) {
-    this.apiKey = apiKey || process.env.CLEARFETCH_API_KEY || process.env.UNBLOCKED_API_KEY || "";
-    this.baseUrl = (baseUrl || process.env.CLEARFETCH_API_URL || process.env.UNBLOCKED_API_URL || "https://api.clearfetch.dev").replace(/\/$/, "");
+    this.apiKey = apiKey || process.env.CLEARFETCH_API_KEY || "";
+    this.baseUrl = (baseUrl || process.env.CLEARFETCH_API_URL || "https://api.clearfetch.dev").replace(/\/$/, "");
 
     if (!this.apiKey) {
       console.error(

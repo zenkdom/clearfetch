@@ -31,7 +31,7 @@ export const ReadUrlSchema = z.object({
 export const ExtractDataSchema = z.object({
   url: z.string().url().describe("Target webpage URL to extract data from"),
   json_schema: z
-    .record(z.any())
+    .record(z.string(), z.any())
     .describe("JSON Schema definition defining the desired typed structure"),
   prompt: z
     .string()

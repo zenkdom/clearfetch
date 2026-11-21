@@ -16,7 +16,19 @@ dotenv.config();
 
 const client = new ClearFetchApiClient();
 
-const TOOLS: Tool[] = [
+export const TOOL_ANNOTATIONS = {
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: true,
+};
+
+export const TOOLS: (Tool & {
+  readOnlyHint?: boolean;
+  destructiveHint?: boolean;
+  idempotentHint?: boolean;
+  openWorldHint?: boolean;
+})[] = [
   {
     name: "clearfetch_read",
     description:
@@ -53,6 +65,8 @@ const TOOLS: Tool[] = [
       },
       required: ["url"],
     },
+    annotations: TOOL_ANNOTATIONS,
+    ...TOOL_ANNOTATIONS,
   },
   {
     name: "clearfetch_extract",
@@ -81,6 +95,8 @@ const TOOLS: Tool[] = [
       },
       required: ["url", "json_schema"],
     },
+    annotations: TOOL_ANNOTATIONS,
+    ...TOOL_ANNOTATIONS,
   },
   {
     name: "clearfetch_search",
@@ -108,6 +124,99 @@ const TOOLS: Tool[] = [
       },
       required: ["query"],
     },
+    annotations: TOOL_ANNOTATIONS,
+    ...TOOL_ANNOTATIONS,
+  },
+  {
+    name: "read_url",
+    description:
+      "Alias for clearfetch_read: Read any URL as clean, token-optimized Markdown with automatic anti-bot bypass.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        url: {
+          type: "string",
+          description: "Target web URL to scrape and convert to Markdown",
+        },
+        stealth: {
+          type: "string",
+          enum: ["auto", "force"],
+          default: "auto",
+        },
+        max_age: {
+          type: "integer",
+          default: 3600,
+        },
+        include_links: {
+          type: "boolean",
+          default: true,
+        },
+        only_main_content: {
+          type: "boolean",
+          default: true,
+        },
+      },
+      required: ["url"],
+    },
+    annotations: TOOL_ANNOTATIONS,
+    ...TOOL_ANNOTATIONS,
+  },
+  {
+    name: "extract_structured_data",
+    description:
+      "Alias for clearfetch_extract: Extract structured JSON matching a strict schema from any webpage.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        url: {
+          type: "string",
+          description: "Target webpage URL to extract data from",
+        },
+        json_schema: {
+          type: "object",
+          description: "Strict JSON Schema describing the target data fields",
+        },
+        prompt: {
+          type: "string",
+          description: "Optional custom instruction or focus for extraction",
+        },
+        stealth: {
+          type: "string",
+          enum: ["auto", "force"],
+          default: "auto",
+        },
+      },
+      required: ["url", "json_schema"],
+    },
+    annotations: TOOL_ANNOTATIONS,
+    ...TOOL_ANNOTATIONS,
+  },
+  {
+    name: "search_and_read",
+    description:
+      "Alias for clearfetch_search: Search the live web and return clean Markdown content bundles in one step.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description: "Search query string",
+        },
+        limit: {
+          type: "integer",
+          default: 5,
+          minimum: 1,
+          maximum: 10,
+        },
+        scrape_results: {
+          type: "boolean",
+          default: true,
+        },
+      },
+      required: ["query"],
+    },
+    annotations: TOOL_ANNOTATIONS,
+    ...TOOL_ANNOTATIONS,
   },
 ];
 
